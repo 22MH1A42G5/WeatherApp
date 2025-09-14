@@ -26,18 +26,14 @@ function updatingData(){
     }).then((data)=>{
         if(data.cod == 404){
             alert('city not found');
+            input.value = "";
         }
         else{
             const change = document.getElementsByClassName('city')[0];
             change.innerHTML = data.name;
-            console.log(data);
-            console.log(data.main.temp);
             ChangeTemperature(data.main.temp);
-            console.log(data.wind.speed);
             ChangeWindSpeed(data.wind.speed);
-            console.log(data.main.humidity);
             ChangeHumidity(data.main.humidity);
-            console.log(data.weather[0].main);
             ChangePicture(data.weather[0].main);
             input.value = "";
         }
@@ -49,3 +45,4 @@ input.addEventListener('keypress', (event)=>{
         updatingData();
     }
 });
+
